@@ -32,12 +32,15 @@ app = FastAPI(
     description="""An API that utilises a Machine Learning model to create json data with stocks and apply a model of prediction""",
     version="1.0.0", debug=True)
 
-def download_stock_data(tickers, start_date="2012-01-01", end_date="2019-12-17"):
+def download_stock_data(tickers, start_date="2022-01-01", end_date=None):
     """
     Download stock data from Yahoo Finance
     """
     try:
-        df = yf.download(tickers, start=start_date, end=end_date, auto_adjust=True, ignore_tz=True)
+        kwargs = dict(start=start_date, auto_adjust=True, ignore_tz=True)
+        if end_date:
+            kwargs['end'] = end_date
+        df = yf.download(tickers, **kwargs)
         print("Colonnes du DataFrame:", df.columns)
         
         if df.empty:
@@ -250,11 +253,13 @@ def predict(data: PredictStocks):
         valid['Predictions'] = predictions
         print(f"Valid data shape after adding predictions: {valid.shape}")
         
+        # Renomme la colonne de clôture en 'Close' pour l'export JSON
+        close_column = valid.columns[0]
+        valid = valid.rename(columns={close_column: "Close"})
+        
         # Return results
         print("Converting to JSON...")
-        # Get the first column (which should be the close price column)
-        close_column = valid.columns[0]
-        result = valid[[close_column, 'Predictions']].to_json(orient="table")
+        result = valid[["Close", "Predictions"]].to_json(orient="table")
         parsed = loads(result)
         print("Prediction completed successfully")
         return parsed
