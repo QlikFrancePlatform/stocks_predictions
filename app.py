@@ -129,6 +129,29 @@ def make_predictions(model, scaler, scaled_data, training_data_len, sequence_len
     
     return predictions
 
+def make_future_predictions(model, scaler, last_60_days_data, days_to_predict=60):
+    """
+    Make future predictions for the next N days
+    """
+    predictions = []
+    current_data = last_60_days_data.copy()
+    
+    for _ in range(days_to_predict):
+        # Reshape data for prediction
+        x_pred = current_data.reshape(1, current_data.shape[0], 1)
+        
+        # Make prediction
+        pred = model.predict(x_pred, verbose=0)
+        
+        # Inverse transform
+        pred_price = scaler.inverse_transform(pred)[0][0]
+        predictions.append(pred_price)
+        
+        # Update data for next prediction (remove oldest, add new prediction)
+        current_data = np.append(current_data[1:], pred)
+    
+    return predictions
+
 @app.get("/", response_class=PlainTextResponse)
 async def running():
     note = """
@@ -241,6 +264,73 @@ def predict(data: PredictStocks):
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         print(f"Unexpected error in predict: {str(e)}")
+        import traceback
+        print(f"Traceback: {traceback.format_exc()}")
+        raise HTTPException(status_code=500, detail=f"Erreur interne: {str(e)}")
+
+@app.post('/predict_future')
+def predict_future(data: PredictStocks, days: int = 60):
+    """
+    Predict stock prices for the next N days (default: 60 days = 2 months)
+    """
+    try:
+        print(f"Starting future prediction for stocks: {data.stocks} for {days} days")
+        
+        features = np.array(data.stocks)
+        feat = str(features)
+        tickers = feat.split(",")
+        print(f"Tickers to process: {tickers}")
+        
+        # Download and prepare data
+        print("Downloading stock data...")
+        df = download_stock_data(tickers)
+        print(f"Downloaded data shape: {df.shape}")
+        
+        print("Extracting close data...")
+        data = get_close_data(df, tickers)
+        print(f"Close data shape: {data.shape}")
+        
+        # Prepare LSTM data
+        print("Preparing LSTM data...")
+        x_train, y_train, scaler, training_data_len, scaled_data = prepare_lstm_data(data)
+        print(f"Training data shape: x_train={x_train.shape}, y_train={y_train.shape}")
+        
+        # Build and train model
+        print("Building and training LSTM model...")
+        model = build_lstm_model((x_train.shape[1], 1))
+        model.fit(x_train, y_train, batch_size=1, epochs=1, verbose=0)
+        print("Model training completed")
+        
+        # Get last 60 days of scaled data for future predictions
+        last_60_days_scaled = scaled_data[-60:]
+        
+        # Make future predictions
+        print(f"Making future predictions for {days} days...")
+        future_predictions = make_future_predictions(model, scaler, last_60_days_scaled, days)
+        print(f"Generated {len(future_predictions)} future predictions")
+        
+        # Create future dates
+        last_date = df.index[-1]
+        future_dates = pd.date_range(start=last_date + pd.Timedelta(days=1), periods=days, freq='D')
+        
+        # Create result DataFrame
+        result_df = pd.DataFrame({
+            'Date': future_dates,
+            'Predicted_Price': future_predictions
+        })
+        
+        # Convert to JSON
+        print("Converting to JSON...")
+        result = result_df.to_json(orient="table")
+        parsed = loads(result)
+        print("Future prediction completed successfully")
+        return parsed
+        
+    except ValueError as e:
+        print(f"ValueError in predict_future: {str(e)}")
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        print(f"Unexpected error in predict_future: {str(e)}")
         import traceback
         print(f"Traceback: {traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=f"Erreur interne: {str(e)}")
