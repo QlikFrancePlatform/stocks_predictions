@@ -161,7 +161,7 @@ def createdata(data: PredictStocks):
         # Convert to JSON
         result = df.to_json(orient="table")
         parsed = loads(result)
-        return dumps(parsed, indent=4)
+        return parsed
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
@@ -232,9 +232,9 @@ def predict(data: PredictStocks):
         # Get the first column (which should be the close price column)
         close_column = valid.columns[0]
         result = valid[[close_column, 'Predictions']].to_json(orient="table")
-        return loads(result)
-        # print("Prediction completed successfully")
-        # return dumps(parsed, indent=4)
+        parsed = loads(result)
+        print("Prediction completed successfully")
+        return parsed
         
     except ValueError as e:
         print(f"ValueError in predict: {str(e)}")
