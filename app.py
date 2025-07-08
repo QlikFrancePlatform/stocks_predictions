@@ -347,5 +347,181 @@ def predict_future(data: PredictStocks, days: int = 60):
         print(f"Traceback: {traceback.format_exc()}")
         raise HTTPException(status_code=500, detail=f"Erreur interne: {str(e)}")
 
+# Nouvelles fonctions pour Qlik Cloud
+def create_qlik_response(data, status="success", message=""):
+    """
+    Crée une réponse formatée pour Qlik Cloud
+    """
+    return {
+        "status": status,
+        "message": message,
+        "data": data,
+        "timestamp": dt.now().isoformat()
+    }
+
+def validate_qlik_request(data):
+    """
+    Valide les données reçues de Qlik Cloud
+    """
+    if not hasattr(data, 'stocks') or not data.stocks:
+        raise ValueError("Le paramètre 'stocks' est requis")
+    
+    if len(data.stocks.strip()) == 0:
+        raise ValueError("Le paramètre 'stocks' ne peut pas être vide")
+    
+    return data.stocks.strip()
+
+@app.post('/qlik/predict')
+def qlik_predict(data: PredictStocks):
+    """
+    Endpoint optimisé pour Qlik Cloud - Prédictions sur données historiques
+    """
+    try:
+        print(f"=== QLIK PREDICT ===")
+        print(f"Données reçues: {data}")
+        
+        # Validation
+        stocks = validate_qlik_request(data)
+        print(f"Stocks validés: {stocks}")
+        
+        # Téléchargement des données
+        df = download_stock_data([stocks], start_date="2022-01-01")
+        if len(df) < 61:
+            return create_qlik_response(
+                [], 
+                "error", 
+                f"Pas assez de données historiques pour {stocks} (minimum 61 jours requis)"
+            )
+        
+        # Extraction des données de clôture
+        data_df = get_close_data(df, [stocks])
+        
+        # Préparation LSTM
+        x_train, y_train, scaler, training_data_len, scaled_data = prepare_lstm_data(data_df)
+        
+        # Entraînement du modèle
+        model = build_lstm_model((x_train.shape[1], 1))
+        model.fit(x_train, y_train, batch_size=1, epochs=1, verbose=0)
+        
+        # Prédictions
+        predictions = make_predictions(model, scaler, scaled_data, training_data_len)
+        
+        # Préparation des résultats
+        train = data_df[:training_data_len]
+        valid = data_df[training_data_len:].copy()
+        valid['Predictions'] = predictions
+        
+        # Renommage de la colonne pour Qlik
+        close_column = valid.columns[0]
+        valid = valid.rename(columns={close_column: "Close"})
+        
+        # Formatage pour Qlik
+        result_data = []
+        for idx, row in valid.iterrows():
+            result_data.append({
+                "Date": idx.strftime("%Y-%m-%d"),
+                "Close": float(row["Close"]),
+                "Predictions": float(row["Predictions"])
+            })
+        
+        print(f"Prédictions générées: {len(result_data)} lignes")
+        return create_qlik_response(result_data, "success", f"Prédictions générées pour {stocks}")
+        
+    except ValueError as e:
+        print(f"Erreur de validation: {str(e)}")
+        return create_qlik_response([], "error", str(e))
+    except Exception as e:
+        print(f"Erreur inattendue: {str(e)}")
+        import traceback
+        print(f"Traceback: {traceback.format_exc()}")
+        return create_qlik_response([], "error", f"Erreur interne: {str(e)}")
+
+@app.post('/qlik/predict_future')
+def qlik_predict_future(data: PredictStocks, days: int = 60):
+    """
+    Endpoint optimisé pour Qlik Cloud - Prédictions futures
+    """
+    try:
+        print(f"=== QLIK PREDICT FUTURE ===")
+        print(f"Données reçues: {data}, jours: {days}")
+        
+        # Validation
+        stocks = validate_qlik_request(data)
+        print(f"Stocks validés: {stocks}")
+        
+        # Téléchargement des données
+        df = download_stock_data([stocks], start_date="2022-01-01")
+        if len(df) < 61:
+            return create_qlik_response(
+                [], 
+                "error", 
+                f"Pas assez de données historiques pour {stocks} (minimum 61 jours requis)"
+            )
+        
+        # Extraction des données de clôture
+        data_df = get_close_data(df, [stocks])
+        
+        # Préparation LSTM
+        x_train, y_train, scaler, training_data_len, scaled_data = prepare_lstm_data(data_df)
+        
+        # Entraînement du modèle
+        model = build_lstm_model((x_train.shape[1], 1))
+        model.fit(x_train, y_train, batch_size=1, epochs=1, verbose=0)
+        
+        # Prédictions futures
+        last_60_days_scaled = scaled_data[-60:]
+        future_predictions = make_future_predictions(model, scaler, last_60_days_scaled, days)
+        
+        # Création des dates futures
+        last_date = df.index[-1]
+        future_dates = pd.date_range(start=last_date + pd.Timedelta(days=1), periods=days, freq='D')
+        
+        # Formatage pour Qlik
+        result_data = []
+        for i, (date, pred) in enumerate(zip(future_dates, future_predictions)):
+            result_data.append({
+                "Date": date.strftime("%Y-%m-%d"),
+                "Predicted_Price": float(pred),
+                "Days_Ahead": i + 1
+            })
+        
+        print(f"Prédictions futures générées: {len(result_data)} lignes")
+        return create_qlik_response(result_data, "success", f"Prédictions futures générées pour {stocks} ({days} jours)")
+        
+    except ValueError as e:
+        print(f"Erreur de validation: {str(e)}")
+        return create_qlik_response([], "error", str(e))
+    except Exception as e:
+        print(f"Erreur inattendue: {str(e)}")
+        import traceback
+        print(f"Traceback: {traceback.format_exc()}")
+        return create_qlik_response([], "error", f"Erreur interne: {str(e)}")
+
+@app.post('/qlik/health')
+def qlik_health():
+    """
+    Endpoint de santé pour Qlik Cloud
+    """
+    return create_qlik_response(
+        {"version": "1.0.0", "status": "healthy"}, 
+        "success", 
+        "API opérationnelle"
+    )
+
+@app.post('/qlik/test')
+def qlik_test(data: PredictStocks):
+    """
+    Endpoint de test pour Qlik Cloud
+    """
+    try:
+        stocks = validate_qlik_request(data)
+        return create_qlik_response(
+            {"stocks": stocks, "test": "success"}, 
+            "success", 
+            f"Test réussi pour {stocks}"
+        )
+    except Exception as e:
+        return create_qlik_response([], "error", str(e))
+
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
