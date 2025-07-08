@@ -1,3 +1,6 @@
+import warnings
+warnings.filterwarnings("ignore")
+
 from fastapi import FastAPI, File, Query, UploadFile, HTTPException, Form
 from fastapi.responses import FileResponse, PlainTextResponse
 from sse_starlette.sse import EventSourceResponse
@@ -229,9 +232,9 @@ def predict(data: PredictStocks):
         # Get the first column (which should be the close price column)
         close_column = valid.columns[0]
         result = valid[[close_column, 'Predictions']].to_json(orient="table")
-        parsed = loads(result)
-        print("Prediction completed successfully")
-        return dumps(parsed, indent=4)
+        return loads(result)
+        # print("Prediction completed successfully")
+        # return dumps(parsed, indent=4)
         
     except ValueError as e:
         print(f"ValueError in predict: {str(e)}")
