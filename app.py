@@ -51,6 +51,9 @@ def download_stock_data(tickers, start_date="2022-01-01", end_date=None):
             df.columns = ['_'.join(col).strip() for col in df.columns.values]
             print("Colonnes après aplatissement:", df.columns)
         
+        if len(df) < 61:
+            raise HTTPException(status_code=400, detail="Pas assez de données historiques pour entraîner le modèle (minimum 61 jours requis).")
+        
         return df
     except Exception as e:
         raise ValueError(f"Erreur lors du téléchargement des données: {str(e)}")
