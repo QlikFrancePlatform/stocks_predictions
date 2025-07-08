@@ -1,0 +1,42 @@
+# Web Framework
+fastapi>=0.109.0,<1.0.0
+uvicorn[standard]>=0.27.0,<1.0.0
+gunicorn>=21.2.0,<22.0.0
+
+# Data Processing
+pandas>=2.2.0,<3.0.0
+numpy>=1.26.0,<2.0.0
+scipy>=1.12.0,<2.0.0
+
+# Machine Learning
+scikit-learn>=1.4.0,<2.0.0
+tensorflow>=2.15.0,<3.0.0
+
+# Data Visualization
+matplotlib>=3.8.0,<4.0.0
+
+# Financial Data
+yfinance>=0.2.35,<1.0.0
+yahoo_fin>=0.8.9,<1.0.0
+pandas-datareader>=0.10.0,<1.0.0
+
+# Utilities
+joblib>=1.3.2,<2.0.0
+pydantic>=2.6.0,<3.0.0
+six>=1.16.0,<2.0.0
+
+# Server Enhancements
+httptools>=0.6.1,<1.0.0
+uvloop>=0.19.0,<1.0.0
+aiofiles>=23.2.1,<24.0.0
+
+# Real-time Communication
+sse-starlette>=1.8.2,<2.0.0
+
+# Testing
+pytest>=7.4.0,<8.0.0
+httpx>=0.25.0,<1.0.0
+
+# macOS specific optimizations
+# Note: These packages are optimized for Apple Silicon (M1/M2/M3) if available
+# numpy and scipy will automatically use Accelerate framework on macOS
