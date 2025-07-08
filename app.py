@@ -200,6 +200,10 @@ def createdata(data: PredictStocks):
 def predict(data: PredictStocks):
     try:
         print(f"Starting prediction for stocks: {data.stocks}")
+        print("=== DEBUG ===")
+        print("Data parsé:", data)
+        print("Type de data:", type(data))
+        print("=============")
         
         features = np.array(data.stocks)
         feat = str(features)
