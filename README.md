@@ -1,8 +1,5 @@
 # 📈 API de Prédiction d'Actions
 
-![Architecture API](assets/connector1.png)
-![Flux de Données](assets/connector2.png)
-
 Une API FastAPI qui utilise un modèle de Machine Learning LSTM pour prédire les prix des actions et fournir des données financières en temps réel.
 
 ## 🚀 Fonctionnalités
@@ -185,6 +182,11 @@ python create_prediction.py
 ```bash
 python test_API_Yahoo.py
 ```
+
+## Create connection REST API to Qlik Cloud
+
+![Connector REST](assets/connector1.png)
+![Connector REST](assets/connector2.png)
 
 ## 📊 Données Sources
 
