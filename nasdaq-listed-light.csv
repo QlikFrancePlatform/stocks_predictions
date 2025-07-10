@@ -1,0 +1,114 @@
+Symbol,Company Name,Security Name,Market Category,Test Issue,Financial Status,Round Lot Size
+AAPL,Apple Inc.,Apple Inc. - Common Stock,Q,N,N,100.0
+MSFT,Microsoft Corporation,Microsoft Corporation - Common Stock,Q,N,N,100.0
+GOOGL,Alphabet Inc.,Alphabet Inc. - Class A Common Stock,Q,N,N,100.0
+GOOG,Alphabet Inc.,Alphabet Inc. - Class C Capital Stock,Q,N,N,100.0
+AMZN,Amazon.com Inc.,Amazon.com Inc. - Common Stock,Q,N,N,100.0
+TSLA,Tesla Inc.,Tesla Inc. - Common Stock,Q,N,N,100.0
+NVDA,NVIDIA Corporation,NVIDIA Corporation - Common Stock,Q,N,N,100.0
+META,Meta Platforms Inc.,Meta Platforms Inc. - Class A Common Stock,Q,N,N,100.0
+NFLX,Netflix Inc.,Netflix Inc. - Common Stock,Q,N,N,100.0
+ADBE,Adobe Inc.,Adobe Inc. - Common Stock,Q,N,N,100.0
+CRM,Salesforce Inc.,Salesforce Inc. - Common Stock,Q,N,N,100.0
+PYPL,PayPal Holdings Inc.,PayPal Holdings Inc. - Common Stock,Q,N,N,100.0
+INTC,Intel Corporation,Intel Corporation - Common Stock,Q,N,N,100.0
+AMD,Advanced Micro Devices Inc.,Advanced Micro Devices Inc. - Common Stock,Q,N,N,100.0
+CSCO,Cisco Systems Inc.,Cisco Systems Inc. - Common Stock,Q,N,N,100.0
+PEP,PepsiCo Inc.,PepsiCo Inc. - Common Stock,Q,N,N,100.0
+COST,Costco Wholesale Corporation,Costco Wholesale Corporation - Common Stock,Q,N,N,100.0
+TMUS,T-Mobile US Inc.,T-Mobile US Inc. - Common Stock,Q,N,N,100.0
+CMCSA,Comcast Corporation,Comcast Corporation - Class A Common Stock,Q,N,N,100.0
+ADP,Automatic Data Processing Inc.,Automatic Data Processing Inc. - Common Stock,Q,N,N,100.0
+ABNB,Airbnb Inc.,Airbnb Inc. - Class A Common Stock,Q,N,N,100.0
+UBER,Uber Technologies Inc.,Uber Technologies Inc. - Common Stock,Q,N,N,100.0
+NKE,Nike Inc.,Nike Inc. - Common Stock,Q,N,N,100.0
+SBUX,Starbucks Corporation,Starbucks Corporation - Common Stock,Q,N,N,100.0
+QCOM,QUALCOMM Incorporated,QUALCOMM Incorporated - Common Stock,Q,N,N,100.0
+AVGO,Broadcom Inc.,Broadcom Inc. - Common Stock,Q,N,N,100.0
+TXN,Texas Instruments Incorporated,Texas Instruments Incorporated - Common Stock,Q,N,N,100.0
+HON,Honeywell International Inc.,Honeywell International Inc. - Common Stock,Q,N,N,100.0
+ISRG,Intuitive Surgical Inc.,Intuitive Surgical Inc. - Common Stock,Q,N,N,100.0
+GILD,Gilead Sciences Inc.,Gilead Sciences Inc. - Common Stock,Q,N,N,100.0
+AMGN,Amgen Inc.,Amgen Inc. - Common Stock,Q,N,N,100.0
+BKNG,Booking Holdings Inc.,Booking Holdings Inc. - Common Stock,Q,N,N,100.0
+ADI,Analog Devices Inc.,Analog Devices Inc. - Common Stock,Q,N,N,100.0
+MDLZ,Mondelez International Inc.,Mondelez International Inc. - Class A Common Stock,Q,N,N,100.0
+REGN,Regeneron Pharmaceuticals Inc.,Regeneron Pharmaceuticals Inc. - Common Stock,Q,N,N,100.0
+VRTX,Vertex Pharmaceuticals Incorporated,Vertex Pharmaceuticals Incorporated - Common Stock,Q,N,N,100.0
+KLAC,KLA Corporation,KLA Corporation - Common Stock,Q,N,N,100.0
+PANW,Palo Alto Networks Inc.,Palo Alto Networks Inc. - Common Stock,Q,N,N,100.0
+SNPS,Synopsys Inc.,Synopsys Inc. - Common Stock,Q,N,N,100.0
+CDNS,Cadence Design Systems Inc.,Cadence Design Systems Inc. - Common Stock,Q,N,N,100.0
+MU,Micron Technology Inc.,Micron Technology Inc. - Common Stock,Q,N,N,100.0
+ORLY,O'Reilly Automotive Inc.,O'Reilly Automotive Inc. - Common Stock,Q,N,N,100.0
+MNST,Monster Beverage Corporation,Monster Beverage Corporation - Common Stock,Q,N,N,100.0
+LRCX,Lam Research Corporation,Lam Research Corporation - Common Stock,Q,N,N,100.0
+ASML,ASML Holding N.V.,ASML Holding N.V. - New York Registry Shares,Q,N,N,100.0
+MAR,Marriott International Inc.,Marriott International Inc. - Class A Common Stock,Q,N,N,100.0
+ZM,Zoom Video Communications Inc.,Zoom Video Communications Inc. - Class A Common Stock,Q,N,N,100.0
+SPOT,Spotify Technology S.A.,Spotify Technology S.A. - Ordinary Shares,Q,N,N,100.0
+SQ,Block Inc.,Block Inc. - Class A Common Stock,Q,N,N,100.0
+SHOP,Shopify Inc.,Shopify Inc. - Class A Subordinate Voting Shares,Q,N,N,100.0
+SNOW,Snowflake Inc.,Snowflake Inc. - Class A Common Stock,Q,N,N,100.0
+PLTR,Palantir Technologies Inc.,Palantir Technologies Inc. - Class A Common Stock,Q,N,N,100.0
+CRWD,CrowdStrike Holdings Inc.,CrowdStrike Holdings Inc. - Class A Common Stock,Q,N,N,100.0
+DDOG,Datadog Inc.,Datadog Inc. - Class A Common Stock,Q,N,N,100.0
+RBLX,Roblox Corporation,Roblox Corporation - Class A Common Stock,Q,N,N,100.0
+LCID,Lucid Group Inc.,Lucid Group Inc. - Common Stock,Q,N,N,100.0
+RIVN,Rivian Automotive Inc.,Rivian Automotive Inc. - Class A Common Stock,Q,N,N,100.0
+NIO,NIO Inc.,NIO Inc. - American Depositary Shares,Q,N,N,100.0
+XPENG,Xpeng Inc.,Xpeng Inc. - American Depositary Shares,Q,N,N,100.0
+LI,Li Auto Inc.,Li Auto Inc. - American Depositary Shares,Q,N,N,100.0
+EA,Electronic Arts Inc.,Electronic Arts Inc. - Common Stock,Q,N,N,100.0
+EBAY,eBay Inc.,eBay Inc. - Common Stock,Q,N,N,100.0
+BIDU,Baidu Inc.,Baidu Inc. - American Depositary Shares,Q,N,N,100.0
+BIIB,Biogen Inc.,Biogen Inc. - Common Stock,Q,N,N,100.0
+EQIX,Equinix Inc.,Equinix Inc. - Common Stock,Q,N,N,100.0
+ERIC,Ericsson,Ericsson - American Depositary Shares,Q,N,N,100.0
+EXPE,Expedia Group Inc.,Expedia Group Inc. - Common Stock,Q,N,N,100.0
+FB,Facebook Inc.,Facebook Inc. - Class A Common Stock,Q,N,N,100.0
+FAST,Fastenal Company,Fastenal Company - Common Stock,Q,N,N,100.0
+FEIC,FEI Company,FEI Company - Common Stock,Q,N,N,100.0
+FEYE,FireEye Inc.,FireEye Inc. - Common Stock,Q,N,N,100.0
+FISV,Fiserv Inc.,Fiserv Inc. - Common Stock,Q,N,N,100.0
+FOXA,Fox Corporation,Fox Corporation - Class A Common Stock,Q,N,N,100.0
+FOX,Fox Corporation,Fox Corporation - Class B Common Stock,Q,N,N,100.0
+FTNT,Fortinet Inc.,Fortinet Inc. - Common Stock,Q,N,N,100.0
+GILD,Gilead Sciences Inc.,Gilead Sciences Inc. - Common Stock,Q,N,N,100.0
+HAS,Hasbro Inc.,Hasbro Inc. - Common Stock,Q,N,N,100.0
+HOLX,Hologic Inc.,Hologic Inc. - Common Stock,Q,N,N,100.0
+IDXX,IDEXX Laboratories Inc.,IDEXX Laboratories Inc. - Common Stock,Q,N,N,100.0
+ILMN,Illumina Inc.,Illumina Inc. - Common Stock,Q,N,N,100.0
+INCY,Incyte Corporation,Incyte Corporation - Common Stock,Q,N,N,100.0
+INTU,Intuit Inc.,Intuit Inc. - Common Stock,Q,N,N,100.0
+JD,JD.com Inc.,JD.com Inc. - American Depositary Shares,Q,N,N,100.0
+KLAC,KLA Corporation,KLA Corporation - Common Stock,Q,N,N,100.0
+LBTYK,Liberty Global plc,Liberty Global plc - Class C Ordinary Shares,Q,N,N,100.0
+LBTYA,Liberty Global plc,Liberty Global plc - Class A Ordinary Shares,Q,N,N,100.0
+LRCX,Lam Research Corporation,Lam Research Corporation - Common Stock,Q,N,N,100.0
+LULU,lululemon athletica inc.,lululemon athletica inc. - Common Stock,Q,N,N,100.0
+MAR,Marriott International Inc.,Marriott International Inc. - Class A Common Stock,Q,N,N,100.0
+MCHP,Microchip Technology Incorporated,Microchip Technology Incorporated - Common Stock,Q,N,N,100.0
+MDLZ,Mondelez International Inc.,Mondelez International Inc. - Class A Common Stock,Q,N,N,100.0
+MNST,Monster Beverage Corporation,Monster Beverage Corporation - Common Stock,Q,N,N,100.0
+MU,Micron Technology Inc.,Micron Technology Inc. - Common Stock,Q,N,N,100.0
+NFLX,Netflix Inc.,Netflix Inc. - Common Stock,Q,N,N,100.0
+NTES,NetEase Inc.,NetEase Inc. - American Depositary Shares,Q,N,N,100.0
+NVDA,NVIDIA Corporation,NVIDIA Corporation - Common Stock,Q,N,N,100.0
+NXPI,NXP Semiconductors N.V.,NXP Semiconductors N.V. - Common Stock,Q,N,N,100.0
+ORLY,O'Reilly Automotive Inc.,O'Reilly Automotive Inc. - Common Stock,Q,N,N,100.0
+PAYX,Paychex Inc.,Paychex Inc. - Common Stock,Q,N,N,100.0
+PCAR,PACCAR Inc.,PACCAR Inc. - Common Stock,Q,N,N,100.0
+PEP,PepsiCo Inc.,PepsiCo Inc. - Common Stock,Q,N,N,100.0
+PYPL,PayPal Holdings Inc.,PayPal Holdings Inc. - Common Stock,Q,N,N,100.0
+QCOM,QUALCOMM Incorporated,QUALCOMM Incorporated - Common Stock,Q,N,N,100.0
+REGN,Regeneron Pharmaceuticals Inc.,Regeneron Pharmaceuticals Inc. - Common Stock,Q,N,N,100.0
+ROST,Ross Stores Inc.,Ross Stores Inc. - Common Stock,Q,N,N,100.0
+SBUX,Starbucks Corporation,Starbucks Corporation - Common Stock,Q,N,N,100.0
+SNPS,Synopsys Inc.,Synopsys Inc. - Common Stock,Q,N,N,100.0
+TXN,Texas Instruments Incorporated,Texas Instruments Incorporated - Common Stock,Q,N,N,100.0
+VRTX,Vertex Pharmaceuticals Incorporated,Vertex Pharmaceuticals Incorporated - Common Stock,Q,N,N,100.0
+WBA,Walgreens Boots Alliance Inc.,Walgreens Boots Alliance Inc. - Common Stock,Q,N,N,100.0
+WDC,Western Digital Corporation,Western Digital Corporation - Common Stock,Q,N,N,100.0
+XEL,Xcel Energy Inc.,Xcel Energy Inc. - Common Stock,Q,N,N,100.0
+ZM,Zoom Video Communications Inc.,Zoom Video Communications Inc. - Class A Common Stock,Q,N,N,100.0 

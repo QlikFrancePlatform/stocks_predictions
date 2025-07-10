@@ -1,5 +1,8 @@
 # 📈 API de Prédiction d'Actions
 
+![Architecture API](assets/connector1.png)
+![Flux de Données](assets/connector2.png)
+
 Une API FastAPI qui utilise un modèle de Machine Learning LSTM pour prédire les prix des actions et fournir des données financières en temps réel.
 
 ## 🚀 Fonctionnalités
